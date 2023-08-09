@@ -1,0 +1,3 @@
+besides basic req´s
+- exercise .py files and CellularAutomaton.py need to be in the same folder, because of import specifications
+- the random seed in 1.4 was developed with 0/is set to 0 
