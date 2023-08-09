@@ -1,0 +1,16 @@
+exercise 3.2.4
+
+Tau-Leaping Approximation generell:
+Tau-Leaping Approximation simuliert Events innerhalb eines bestimmten Zeitintervalls gleichzeitig,
+im Gegensatz zur sequentieller Simulation, um Zeit zu sparen.
+
+Anpassung an Algorithmen DM und FRM:
+1. Einführung einer Schrittgröße-Variable s, s > 0
+2. Für jede Reaktion R_i:
+Ermittle zufällige Poisson Variable.
+rand_Poisson_R_i = Poisson(Rate von R_i im Zustand z, s)
+-> besagt wie oft eine Reaktion feuert
+3.
+t und z werden erhöht:
+t += s
+z-Erhöhung abhängig von Transitionsart, Poisson Variable, Zustandsstrategie
