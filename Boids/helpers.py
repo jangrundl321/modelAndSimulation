@@ -48,27 +48,21 @@ class BoidFlock():
                 if boid == otherboid:
                     continue
 
-                # Compute differences in x and y coordinates
                 dx = boid.X - otherboid.X
                 dy = boid.Y - otherboid.Y
 
-                # Are both those differences less than the visual range?
                 if (abs(dx) < self.visible_range and abs(dy) < self.visible_range):
 
-                    # If so, calculate the squared distance
+               
                     squared_distance = dx * dx + dy * dy
-
-                    # Is squared distance less than the protected range?
+                    
                     if (squared_distance < self.separation_range):
 
-                        # If so, calculate difference in x/y-coordinates to nearfield boid
                         close_dx += boid.X - otherboid.X
                         close_dy += boid.Y - otherboid.Y
 
-                    # If not in protected range, is the boid in the visual range?
                     elif (squared_distance < self.visible_range * self.visible_range):
 
-                        # Add other boid's x/y-coord and x/y vel to accumulator variables
                         xpos_avg += otherboid.X
                         ypos_avg += otherboid.Y
                         xvel_avg += otherboid.vx
@@ -91,12 +85,9 @@ class BoidFlock():
                            (ypos_avg - boid.Y) * self.cohesion_factor +
                            (yvel_avg - boid.vy) * self.alignment_factor)
 
-            # Add the avoidance contribution to velocity
             boid.vx = boid.vx + (close_dx * self.separation_factor)
             boid.vy = boid.vy + (close_dy * self.separation_factor)
 
-            # If the boid is near an edge, make it turn by turnfactor
-            # (this describes a box, will vary based on boundary conditions)
             if boid.X < LEFTMARGIN:
                 boid.vx = boid.vx + self.separation_factor
             if boid.X > RIGHTMARGIN:
